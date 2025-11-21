@@ -53,15 +53,14 @@ public class LoanCalc {
             iterationCounter++;
             
             double g = (L + H) / 2.0; 
-            double f_g = endBalance(loan, rate, n, g);
-
-            if (f_g > 0) {
+            
+            if (endBalance(loan, rate, n, g) > 0) {
                 L = g;
             } else {
                 H = g;
             }
         }
         
-        return (L + H) / 2.0; 
+        return L; 
     }
 }
