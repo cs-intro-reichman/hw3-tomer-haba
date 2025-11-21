@@ -1,12 +1,20 @@
 public class Algebra {
 
-    // Helper function: Calculates absolute value using only minus(0, a)
+    // Helper function: Calculates absolute value using only ++ / -- and basic comparisons
+    // FIX: This implementation breaks the circular dependency on minus().
     private static int internalAbs(int a) {
-        if (a == 0) return 0;
-        if (a > 0) return a; 
+        if (a >= 0) {
+            return a;
+        }
         
-        // If a is negative, return 0 - a (relies on correct minus implementation)
-        return minus(0, a);
+        // If 'a' is negative, count how many increments (++) are needed to reach 0.
+        int result = 0;
+        int current = a;
+        while (current != 0) {
+            current++; // Move current towards zero
+            result++;  // Count the steps taken (which is the absolute value)
+        }
+        return result;
     }
 
     // Returns x1 + x2
