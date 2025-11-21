@@ -1,7 +1,7 @@
 public class LoanCalc {
 
-    static double epsilon = 0.001;  // Approximation accuracy
-    static int iterationCounter;    // Number of iterations 
+    static double epsilon = 0.001;
+    static int iterationCounter;
     
     public static void main(String[] args) {        
         double loan = Double.parseDouble(args[0]);
@@ -61,6 +61,6 @@ public class LoanCalc {
             }
         }
         
-        return L; 
+        return H; 
     }
 }
