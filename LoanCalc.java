@@ -49,22 +49,19 @@ public class LoanCalc {
         double L = loan / n; 
         double H = loan * Math.pow(1 + (rate / 100.0), n);
         
-        double g = (L + H) / 2.0;
-
         while ((H - L) > epsilon) {
             iterationCounter++;
             
-            if (endBalance(loan, rate, n, g) > 0) {
-                // Since f(g) > 0 and f(L) > 0, the solution is between g and H.
+            double g = (L + H) / 2.0; 
+            double f_g = endBalance(loan, rate, n, g);
+
+            if (f_g > 0) {
                 L = g;
             } else {
-                // Since f(g) <= 0 and f(H) < 0, the solution is between L and g.
                 H = g;
             }
-            
-            g = (L + H) / 2.0;
         }
         
-        return g;
+        return (L + H) / 2.0; 
     }
 }
